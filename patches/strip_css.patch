@@ -1,0 +1,149 @@
+diff --git a/trunk/user/www/n56u_ribbon_fixed/bootstrap/css/main.css b/trunk/user/www/n56u_ribbon_fixed/bootstrap/css/main.css
+index 8583ae8a5f..316c98a2a8 100755
+--- a/trunk/user/www/n56u_ribbon_fixed/bootstrap/css/main.css
++++ b/trunk/user/www/n56u_ribbon_fixed/bootstrap/css/main.css
+@@ -126,7 +126,6 @@ body.body_iframe{
+     font: bold 12px/30px sans-serif;
+     padding: 0 10px;
+     text-decoration: none;
+-    /*white-space: nowrap;*/
+ }
+ .side_nav ul a img {
+     margin: 5px 5px -12px -3px;
+@@ -248,8 +247,6 @@ li:last-child > div.accordion > a:last-child {
+     border-top: 1px solid #888888;
+     cursor: pointer;
+ }
+-.bar_nav > ul > li > ul li:first-child > a, .side_nav > ul li:first-child > a {
+-}
+ .bar_nav ul li:last-child ul a {
+     margin-bottom: 0;
+ }
+@@ -282,22 +279,10 @@ li div.accordion a {
+ }
+ 
+ .grad_grey, .bar_nav ul a, .side_nav ul a, .bar_nav ul, .side_nav ul, .drop_box {
+-    background: #ffffff; /* old browsers */
+-    background: -moz-linear-gradient(top, #ffffff 0%, #ededed 100%); /* firefox */
+-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #ededed)); /* webkit */
+-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=0 ); /* ie */
+-    background: -o-linear-gradient(top, #ffffff 0%, #ededed 99%);
+-    background: linear-gradient(top, #ffffff 0%, #ededed 99%);
+-    background: -ms-linear-gradient(top, #ffffff 0%, #ededed 99%);
++    background: linear-gradient(to bottom, #ffffff 0%, #ededed 99%);
+ }
+ .grad_grey_reverse, .bar_nav ul li:hover > a, .side_nav ul li:hover > a, .side_nav ul li.active > a {
+-    background: #ddd; /* old browsers */
+-    background: -moz-linear-gradient(top, #a0a3a8 0%, #888b90 100%); /* firefox */
+-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a0a3a8), color-stop(100%, #888b90)); /* webkit */
+-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a0a3a8', endColorstr='#888b90', GradientType=0 ); /* ie */
+-    background: -o-linear-gradient(top, #a0a3a8 0%, #888b90 100%);
+-    background: linear-gradient(top, #a0a3a8 0%, #888b90 100%);
+-    background: -ms-linear-gradient(top, #a0a3a8 0%, #888b90 100%);
++    background: linear-gradient(to bottom, #a0a3a8 0%, #888b90 100%);
+ }
+ 
+ .box {
+@@ -317,18 +302,9 @@ li div.accordion a {
+ }
+ 
+ .box.grad_colour_dark_blue h2.box_head {
+-    background-color: #006dcc;
+-    background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
+-    background-image: -ms-linear-gradient(top, #0088cc, #0044cc);
+-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
+-    background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+-    background-image: -o-linear-gradient(top, #0088cc, #0044cc);
+-    background-image: linear-gradient(top, #0088cc, #0044cc);
++    background-image: linear-gradient(to bottom, #0088cc, #0044cc);
+     background-repeat: repeat-x;
+-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0088cc', endColorstr='#0044cc', GradientType=0);
+-    border-color: #0044cc #0044cc #002a80;
+     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+-    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+     color:#ffffff;
+     margin-bottom: 1px;
+@@ -442,11 +418,8 @@ a.help_tooltip:hover {text-decoration: none; border-bottom: 1px dotted grey; col
+     margin-left:-1px;
+     width: 35%;
+     height: 566px;
+-    background-color:#ccc;
+     background: url("/bootstrap/img/loading_bg.png") repeat scroll 50% 50% #ccc;
+-    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=60);
+     opacity: .6;
+-    -moz-opacity: 0.6;
+ }
+ 
+ .FileStatus{
+@@ -461,7 +434,6 @@ a.help_tooltip:hover {text-decoration: none; border-bottom: 1px dotted grey; col
+     background:url(/bootstrap/img/wl_device/3.gif);
+     background-repeat:no-repeat;
+     background-position: left;
+-    /*margin-left:2px;*/
+     padding-left:23px;
+     padding-top:3px;
+ }
+@@ -503,8 +475,6 @@ textarea[readonly] {
+     z-index: 90;
+ 
+     border: 1px solid #ccc;
+-    -webkit-border-radius: 4px 4px 0px 4px;
+-    -moz-border-radius: 4px 4px 0px 4px;
+     border-radius: 4px 4px 0px 4px;
+ }
+ 
+@@ -515,36 +485,18 @@ textarea[readonly] {
+ 
+ #syslog_panel_button {
+     display: inline-block;
+-    *display: inline;
+     margin-bottom: 0;
+-    *margin-left: .3em;
+     color: #333333;
+     text-align: center;
+     text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+     vertical-align: middle;
+     cursor: pointer;
+-    background-color: #f5f5f5;
+-    *background-color: #e6e6e6;
+-    background-image: -ms-linear-gradient(top, #ffffff, #e6e6e6);
+-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+-    background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+-    background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+-    background-image: linear-gradient(top, #ffffff, #e6e6e6);
+-    background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
++    background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+     background-repeat: repeat-x;
+     border: 1px solid #cccccc;
+-    *border: 0;
+-    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+     border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+     border-bottom-color: #b3b3b3;
+-    -webkit-border-radius: 4px;
+-    -moz-border-radius: 4px;
+     border-radius: 4px;
+-    filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
+-    filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+-    *zoom: 1;
+-    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+-    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+ 
+     padding: 2px 6px;
+@@ -554,14 +506,7 @@ textarea[readonly] {
+ #syslog_panel_button:hover {
+     color: #333333;
+     text-decoration: none;
+-    background-color: #e6e6e6;
+-    *background-color: #d9d9d9;
+-    background-image: -ms-linear-gradient(top, #e6e6e6, #ffffff);
+-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e6e6e6), to(#ffffff));
+-    background-image: -webkit-linear-gradient(top, #e6e6e6, #ffffff);
+-    background-image: -o-linear-gradient(top, #e6e6e6, #ffffff);
+-    background-image: linear-gradient(top, #e6e6e6, #ffffff);
+-    background-image: -moz-linear-gradient(top, #e6e6e6, #ffffff);
++    background-image: linear-gradient(to bottom, #e6e6e6, #ffffff);
+ }
+ 
+ #log_area {

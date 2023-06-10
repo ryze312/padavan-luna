@@ -1,0 +1,10 @@
+diff --git a/trunk/user/scripts/profile b/trunk/user/scripts/profile
+index 54cf6f7d25..7e48e1fc40 100755
+--- a/trunk/user/scripts/profile
++++ b/trunk/user/scripts/profile
+@@ -12,4 +12,5 @@ if [ "$PS1" ] ; then
+ 
+ fi;
+ 
++alias ls='ls -lh'
+ [ -r /opt/etc/profile ] && . /opt/etc/profile

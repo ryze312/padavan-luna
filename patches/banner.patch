@@ -1,0 +1,13 @@
+diff --git a/trunk/user/scripts/profile b/trunk/user/scripts/profile
+index 54cf6f7d25..51b1c52dc6 100755
+--- a/trunk/user/scripts/profile
++++ b/trunk/user/scripts/profile
+@@ -8,6 +8,8 @@ if [ "$PS1" ] ; then
+     export TERMINFO=/usr/share/terminfo
+     export TERM=xterm
+     [ -r /etc_ro/banner ] && cat /etc_ro/banner
++    echo "Praise the night!"
++    echo "Built with ponies and love"
+     echo "Version: $(nvram get firmver_sub)"; echo ""
+ 
+ fi;

@@ -1,0 +1,259 @@
+/* Using :root to override */
+
+:root {
+    --luna-gradient: linear-gradient(#1C4CC2 0%, #1551DE 25%, #173083 75%, #320080 100%);
+    --luna-short-gradient: linear-gradient(90deg, #320080 0%, #1C4CC2 100%);
+    --luna-border: #144BAC;
+
+    --luna-blue-dark: #00328A;
+    --luna-blue: #1866EF;
+    --luna-blue-bright: #1C4CC2;
+    --luna-midnight: #0A2658;
+    --luna-pink-bright: #E55DFA;
+    --luna-pink-dark: #DB20F8;
+    --luna-purple: #885DE4;
+    --luna-green-dark: #0A8F70;
+    --luna-green-bright:#66F4D4;
+    --luna-off-white: #CFE9F5;
+}
+
+:root body {
+    color: #FFFFFF;
+    background-color: #00000F;
+}
+
+:root .body_iframe {
+    background-color: var(--luna-blue-dark);;
+}
+
+:root a {
+    color: #F4AAFF;
+}
+
+:root a:hover {
+    color: var(--luna-pink-dark);
+}
+
+:root .help_tooltip {
+    color: #FFFFFF;
+}
+
+:root .help_tooltip:hover {    background: #0a8f70;
+    color: #FFFFFF;
+    background-color: var(--luna-blue-bright);
+    border: 1px solid var(--luna-border);
+}
+
+:root select, :root input {
+    color: #FFFFFF;
+    background-color: var(--luna-blue-bright);
+    border: 1px solid var(--luna-border);
+}
+
+:root textarea {
+    color: #FFFFFF;
+    background: var(--luna-midnight);
+    border: 1px solid var(--luna-border);
+}
+
+:root tbody tr:first-child > th:only-child  {
+    background-color: #3066C2 !important;
+}
+
+:root .table th, .table td {
+    border-top: 1px solid var(--luna-border);
+}
+
+:root #tabMenu + table td{
+    border-top: none;
+}
+
+:root .table-striped tr:nth-child(even) td {
+    background-color: var(--luna-blue-bright) !important;
+}
+
+:root .well {
+    background: var(--luna-blue-dark);;
+}
+
+:root .box.grad_colour_dark_blue h2.box_head {
+    background: var(--luna-gradient);
+}
+
+:root .nav-tabs {
+    border-bottom: 1px solid var(--luna-border);
+}
+
+:root .nav-tabs a {
+    border: none !important;
+}
+
+:root .nav-tabs a:hover {
+    background: #1044C6;
+    color: inherit;
+}
+
+:root .nav-tabs .active a {
+    background: var(--luna-blue-bright);
+    color: inherit;
+}
+
+:root .nav-list > li > a {
+    text-shadow: none;
+}
+
+:root .nav-list a:hover {
+    background: var(--luna-border);
+    color: var(--luna-off-white);
+    border-radius: 10px;
+}
+
+:root .sidebar-nav {
+    background: var(--luna-gradient);
+
+    border: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+:root .sidebar-nav a {
+    color: var(--luna-off-white);
+    text-shadow: 0 1px 0 #111111;
+
+    border: none !important;
+}
+
+:root .sidebar-nav a:hover {
+    background: var(--luna-short-gradient) no-repeat;
+    mix-blend-mode: screen;
+}
+
+:root .sidebar-nav .active a {
+    background: var(--luna-pink-bright);
+}
+
+:root .accordion a:hover {
+    background-size: 100% 80% !important;
+    background-position: center !important;
+    color: var(--luna-pink-bright);
+}
+
+:root .sidebar-nav ul, :root .sidebar-nav ul a {
+    background: none;
+}
+
+:root .btn {
+    background: var(--luna-blue);
+    text-shadow: none;
+}
+
+:root .btn:hover {
+    background: var(--luna-purple);
+}
+
+:root .itoggle > span {
+    display: none !important; /* Empty white span shows under toggles */
+}
+
+:root .progress .bar  {
+    background: var(--luna-blue);
+}
+
+:root .alert {
+    color: #FFFFFF;
+    text-shadow: none;
+    border: none;
+}
+
+:root .alert-info {
+    background: var(--luna-blue);
+    border: 1px solid var(--luna-border);
+}
+
+:root .alert-danger, :root .alert-error {
+    background: var(--luna-pink-dark);
+    border: 1px solid var(--luna-pink-dark);
+}
+
+:root .popover-inner {
+    padding: 0;
+    backdrop-filter: blur(2.5px);
+}
+
+:root .popover-title {
+    background: #1866EF40;
+    border-bottom: 1px solid var(--luna-border);
+}
+
+:root .popover-content {
+    background: #00328A40; 
+}
+
+:root .arrow-right {
+    display: none !important;
+}
+
+:root #TopBanner {
+    margin-top: 60px;
+}
+
+:root #logo {
+    width: 220px;
+    height: 162px;
+}
+
+:root #cpu_info, #mem_info, .adv_info {
+    border: none;
+}
+
+:root #syslog_panel_button {
+    background: var(--luna-blue-bright) !important;
+    color: #FFFFFF !important;
+    border: none !important;
+}
+
+:root .syslog_panel {
+    background: var(--luna-gradient);
+    border-color: var(--luna-pink-bright);
+}
+
+:root .popup_bg {
+    background: #0A2658AA;
+    backdrop-filter: blur(5px);
+    opacity: 1.0;
+}
+
+:root .popup_bg .well {
+    background: transparent !important;
+    border: none !important;;
+    
+    transform: scale(1.25);
+}
+
+:root .progress .bar  {
+    background: var(--luna-blue);
+}
+
+:root label {
+    color: var(--luna-off-white);
+}
+
+:root .label-info, :root .badge-info {
+    background: var(--luna-blue);
+}
+
+:root .label-important, :root .badge-important {
+    background: var(--luna-purple);
+}
+
+:root .label-success, :root .badge-success { 
+    background: var(--luna-green-dark);
+}
+
+:root #hidden_frame, :root .wrapper > br {
+    display: none;
+}
+
+:root form {
+    margin: 0; /* Can't hide those, just override margin */
+}

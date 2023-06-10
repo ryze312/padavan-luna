@@ -1,0 +1,85 @@
+diff --git a/toolchain/build_toolchain.sh b/toolchain/build_toolchain.sh
+index 9e74a66fc9..3c318be505 100755
+--- a/toolchain/build_toolchain.sh
++++ b/toolchain/build_toolchain.sh
+@@ -25,6 +25,6 @@ if [ -d .build ]; then
+ 	rm -rf ${CONFIG_TOOLCHAIN_DIR}
+ fi
+ 
+-(./ct-ng mipsel-linux-uclibc && ./ct-ng build) || exit 1
++(./ct-ng mipsel-linux-uclibc && ./ct-ng menuconfig && sed -e 's|CT_ISL_MIRRORS=.*$|CT_ISL_MIRRORS="https://libisl.sourceforge.io"|' -i .config && ./ct-ng build) || exit 1
+ 
+ echo "====================All IS DONE!========================"
+diff --git a/trunk/Makefile b/trunk/Makefile
+index 28fbbae519..f291955ba7 100755
+--- a/trunk/Makefile
++++ b/trunk/Makefile
+@@ -161,6 +161,11 @@ dep:
+ tools:
+ 	make -C tools
+ 
++menuconfig:
++	$(MAKE) -C $(LINUXDIR) menuconfig
++	$(MAKE) -C libc menuconfig
++	$(MAKE) -C user menuconfig
++
+ clean:
+ 	make clean -C tools
+ 	for dir in  $(DIRS); do [ ! -d $$dir ] || $(MAKEARCH) -C $$dir clean ; done
+diff --git a/trunk/build_firmware.sh b/trunk/build_firmware.sh
+index aed97190d0..f681f1bca7 100755
+--- a/trunk/build_firmware.sh
++++ b/trunk/build_firmware.sh
+@@ -535,5 +535,7 @@ fi
+ #######################################################################
+ echo --------------------------MAKE-DEP--------------------------------
+ make dep
++echo --------------------------MAKE-MENUCONFIG-------------------------
++make menuconfig
+ echo --------------------------MAKE-ALL--------------------------------
+ make
+diff --git a/trunk/libc/Makefile b/trunk/libc/Makefile
+index 6d9083df5c..15f433b0a7 100755
+--- a/trunk/libc/Makefile
++++ b/trunk/libc/Makefile
+@@ -45,6 +45,9 @@ endif
+ %_clean:
+ 	$(MAKE) -C $(@:_clean=) clean
+ 
++menuconfig:
++	$(MAKE) -C $(LIBC_DIR) menuconfig
++
+ romfs:
+ 	$(STRIP) $(DESTDIR)/bin/ldd ; \
+ 	$(STRIP) $(DESTDIR)/sbin/ldconfig ; \
+diff --git a/trunk/user/Makefile b/trunk/user/Makefile
+index 7748f9b068..cbb8ff6527 100755
+--- a/trunk/user/Makefile
++++ b/trunk/user/Makefile
+@@ -204,6 +204,12 @@ romfs:
+ 		$(MAKE) -C $$i romfs ; \
+ 	done
+ 
++menuconfig:
++	for i in $(dir_y) ; do \
++		[ ! -d $$i ] || \
++		$(MAKE) -C $$i menuconfig ; \
++	done
++
+ clean:
+ 	for i in `ls -d *` ; do \
+ 		[ ! -d $$i ] || \
+diff --git a/trunk/user/busybox/Makefile b/trunk/user/busybox/Makefile
+index 8bcc93f5bb..8972c1f939 100755
+--- a/trunk/user/busybox/Makefile
++++ b/trunk/user/busybox/Makefile
+@@ -15,6 +15,9 @@ extract_test:
+ 		patch -d $(SRC_NAME) -p1 -i ../busybox-1.36.1-orig.patch ; \
+ 	fi )
+ 
++menuconfig:
++	$(MAKE) -C $(SRC_NAME) menuconfig
++
+ clean:
+ 	$(MAKE) -C $(SRC_NAME) distclean
+ 

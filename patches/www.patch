@@ -1,0 +1,62 @@
+diff --git a/trunk/user/www/n56u_ribbon_fixed/bootstrap/css/main.css b/trunk/user/www/n56u_ribbon_fixed/bootstrap/css/main.css
+index 8583ae8a5f..475c7759b9 100755
+--- a/trunk/user/www/n56u_ribbon_fixed/bootstrap/css/main.css
++++ b/trunk/user/www/n56u_ribbon_fixed/bootstrap/css/main.css
+@@ -1,3 +1,5 @@
++@import url(luna.css);
++
+ body{
+     background-color: #282828;
+     overflow-y: scroll;
+diff --git a/trunk/user/www/n56u_ribbon_fixed/state.js b/trunk/user/www/n56u_ribbon_fixed/state.js
+index a4f697ff7d..12eb9054e1 100755
+--- a/trunk/user/www/n56u_ribbon_fixed/state.js
++++ b/trunk/user/www/n56u_ribbon_fixed/state.js
+@@ -533,7 +533,7 @@ function show_menu(L1, L2, L3){
+ 		if(menuL2_title[i] == "")
+ 			continue;
+ 		else if(L2 == i)
+-			menu2_code += '<a href="javascript: void(0)" style="color: #005580; font-weight: bold"><i class="icon-minus"></i>&nbsp;&nbsp;'+menuL2_title[i]+'</a>\n';
++			menu2_code += '<a href="javascript: void(0)" style="color: #E21CFF; font-weight: bold"><i class="icon-minus"></i>&nbsp;&nbsp;'+menuL2_title[i]+'</a>\n';
+ 		else
+ 			menu2_code += '<a href="'+menuL2_link[i]+'"><i class="icon-minus"></i>&nbsp;&nbsp;'+menuL2_title[i]+'</a>\n';
+ 	}
+@@ -561,11 +561,10 @@ function show_menu(L1, L2, L3){
+ 
+ function show_footer(){
+ 	footer_code = '<div align="center" class="bottom-image"></div>\n';
++	footer_code +='<div align="center">Built with ponies and love by <a href="https://github.com/ryze312">Ryze</a> 💜</div>\n';
+ 	footer_code +='<div align="center" class="copyright"><#footer_copyright_desc#></div>\n';
+ 	footer_code +='<div align="center">\n';
+-	footer_code +='  <span>© Linaro &amp; Alxdm &amp; Mahtab &amp; Hadzhioglu</span></br>\n';
+-	footer_code +='  <span>Develops by <a href="https://gitlab.com/hadzhioglu/padavan-ng">Hadzhioglu</a></span></br>\n';
+-	footer_code +='  <span>Firmware distribution is prohibited and Non-Commercial Use Only</span></br>\n';
++	footer_code +='  <span>© Linaro &amp; Alxdm &amp; Mahtab &amp; <a href="https://gitlab.com/hadzhioglu/padavan-ng">Hadzhioglu</a></span></br>\n';
+ 	footer_code +='</div>\n';
+ 
+ 	$("footer").innerHTML = footer_code;
+diff --git a/trunk/user/www/Makefile b/trunk/user/www/Makefile
+index d525149eda..5b002c0c3d 100755
+--- a/trunk/user/www/Makefile
++++ b/trunk/user/www/Makefile
+@@ -7,9 +7,9 @@ ROMFS_DIR = $(ROOTDIR)/romfs
+ include $(ROOTDIR)/user/shared/boards.mk
+ 
+ PROJECT_HOME_URL="https:\/\/gitlab.com\/hadzhioglu\/padavan-ng"
+-LABEL_COPYRIGHT_TEXT="© 2011-2023 Padavan \& N56U project community \& Building a firmware: `date +'%d.%m.%Y %H:%M:%S'`"
++LABEL_COPYRIGHT_TEXT="© 2011-2023 Padavan \& N56U project community"
+ 
+-BOARD_PATTERN=s/ZVMODELVZ/$(CONFIG_FIRMWARE_PRODUCT_ID)/g
++BOARD_PATTERN=s/ZVMODELVZ/Luna/g
+ COPYR_PATTERN=s/ZVCOPYRVZ/$(LABEL_COPYRIGHT_TEXT)/g
+ DWURL_PATTERN=s/ZVDWURLVZ/$(PROJECT_HOME_URL)/g
+ 
+@@ -82,7 +82,7 @@ ifeq ($(CONFIG_FIRMWARE_INCLUDE_LANG_UK),y)
+ 	cp dict/UK.dict $(ROMFS_DIR)/www
+ endif
+ 	cat $(ROMFS_DIR)/www/EN.header dict/EN.footer > $(ROMFS_DIR)/www/EN.dict
+-	sed -i 's/^Web_Title=.*/Web_Title=ZVMODELVZ Wireless Router/' $(ROMFS_DIR)/www/*.dict
++	sed -i 's/^Web_Title=.*/Web_Title=ZVMODELVZ/' $(ROMFS_DIR)/www/*.dict
+ 	sed $(BOARD_PATTERN) -i $(ROMFS_DIR)/www/*.dict
+ 	sed $(COPYR_PATTERN) -i $(ROMFS_DIR)/www/*.dict
+ 	sed $(DWURL_PATTERN) -i $(ROMFS_DIR)/www/*.dict
