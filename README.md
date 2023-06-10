@@ -26,7 +26,7 @@ To install a patch get it from `patches` directory and apply using `patch` or `g
 [Sample config files](configs) that can be loaded using [menuconfig patch](patches/menuconfig.patch) on build.
 
 ### Kernel
-```toml
+```bash
 CONFIG_NO_HZ=y
 CONFIG_DEFAULT_HOSTNAME=luna
 CONFIG_BUG=n
@@ -39,7 +39,7 @@ CONFIG_SQUASHFS_4K_DEVBLK_SIZE=y
 ```
 
 ### Busybox
-```toml
+```bash
 CONFIG_CHROOT=n
 CONFIG_DOS2UNIX=n
 CONFIG_UNIX2DOS=n
@@ -57,7 +57,7 @@ CONFIG_INETD=n
 ```
 
 ### Toolchain
-```toml
+```bash
 CT_STRIP_TARGET_TOOLCHAIN_EXECUTABLES=y
 CT_EXTRA_CFLAGS_FOR_BUILD="-O3"
 CT_EXTRA_LDFLAGS_FOR_BUILD="-O3"
