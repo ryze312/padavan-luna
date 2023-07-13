@@ -151,8 +151,9 @@
     background: var(--luna-purple);
 }
 
-:root .itoggle > span {
-    display: none !important; /* Empty white span shows under toggles */
+:root .itoggle {
+    width: 93px !important;
+    height: 27px !important;
 }
 
 :root .progress .bar  {
