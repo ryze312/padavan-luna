@@ -30,12 +30,53 @@ diff --git a/trunk/build_firmware.sh b/trunk/build_firmware.sh
 index aed97190d0..f681f1bca7 100755
 --- a/trunk/build_firmware.sh
 +++ b/trunk/build_firmware.sh
+@@ -72,6 +72,20 @@ func_disable_busybox_param()
+        fi
+ }
+
++func_print_config_changes()
++{
++    echo $1
++    echo "---------"
++    diff --changed-group-format='%>' --unchanged-group-format='' "$2" "$3"
++    echo "---------"
++}
++
++func_wait_for_user()
++{
++    read -s -n 1 -p "Press any key to continue..."
++    echo
++}
++
+ if [ ! -f "$ROOTDIR/.config" ] ; then
+        echo "Project config file .config not found! Terminate."
+        exit 1
 @@ -535,5 +535,7 @@ fi
  #######################################################################
  echo --------------------------MAKE-DEP--------------------------------
  make dep
++
 +echo --------------------------MAKE-MENUCONFIG-------------------------
++echo "Please review the changes and make sure they don't conflict with router config."
++func_wait_for_user
++
++orig_kernel_tf="${ROOTDIR}/kernel.orig"
++orig_busybox_tf="${ROOTDIR}/busybox.orig"
++
++cp "$kernel_tf" "$orig_kernel_tf"
++cp "$busybox_tf" "$orig_busybox_tf"
++
 +make menuconfig
++
++func_print_config_changes "Kernel changes:" "$orig_kernel_tf" "$kernel_tf"
++func_wait_for_user
++
++func_print_config_changes "Busybox changes:" "$orig_busybox_tf" "$busybox_tf"
++func_wait_for_user
++
++rm "$orig_kernel_tf"
++rm "$orig_busybox_tf"
++
  echo --------------------------MAKE-ALL--------------------------------
  make
 diff --git a/trunk/libc/Makefile b/trunk/libc/Makefile
